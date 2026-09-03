@@ -437,7 +437,6 @@ function ProviderConnection(props: {
   const [store, setStore] = createStore({
     methodIndex: undefined as undefined | number,
     authorization: undefined as undefined | IntegrationOauthConnectOutput["data"],
-    promptInputs: undefined as undefined | Record<string, string>,
     state: "pending" as undefined | "pending" | "complete" | "error" | "prompt",
     error: undefined as string | undefined,
   })
@@ -446,7 +445,6 @@ function ProviderConnection(props: {
     | { type: "method.select"; index: number }
     | { type: "method.reset" }
     | { type: "auth.prompt" }
-    | { type: "auth.inputs"; inputs: Record<string, string> }
     | { type: "auth.pending" }
     | { type: "auth.complete"; authorization: IntegrationOauthConnectOutput["data"] }
     | { type: "auth.error"; error: string }
@@ -457,7 +455,6 @@ function ProviderConnection(props: {
         if (action.type === "method.select") {
           draft.methodIndex = action.index
           draft.authorization = undefined
-          draft.promptInputs = undefined
           draft.state = undefined
           draft.error = undefined
           return
@@ -465,19 +462,12 @@ function ProviderConnection(props: {
         if (action.type === "method.reset") {
           draft.methodIndex = undefined
           draft.authorization = undefined
-          draft.promptInputs = undefined
           draft.state = undefined
           draft.error = undefined
           return
         }
         if (action.type === "auth.prompt") {
           draft.state = "prompt"
-          draft.error = undefined
-          return
-        }
-        if (action.type === "auth.inputs") {
-          draft.promptInputs = action.inputs
-          draft.state = undefined
           draft.error = undefined
           return
         }
