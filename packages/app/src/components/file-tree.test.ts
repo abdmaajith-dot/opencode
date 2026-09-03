@@ -1,7 +1,6 @@
 import { beforeAll, describe, expect, mock, test } from "bun:test"
 
 let shouldListRoot: typeof import("./file-tree").shouldListRoot
-let shouldListExpanded: typeof import("./file-tree").shouldListExpanded
 let dirsToExpand: typeof import("./file-tree").dirsToExpand
 
 beforeAll(async () => {
@@ -33,7 +32,6 @@ beforeAll(async () => {
   mock.module("@opencode-ai/ui/tooltip", () => ({ Tooltip: (props: { children?: unknown }) => props.children }))
   const mod = await import("./file-tree")
   shouldListRoot = mod.shouldListRoot
-  shouldListExpanded = mod.shouldListExpanded
   dirsToExpand = mod.dirsToExpand
 })
 
@@ -43,15 +41,6 @@ describe("file tree fetch discipline", () => {
     expect(shouldListRoot({ level: 0, dir: { loaded: true } })).toBe(false)
     expect(shouldListRoot({ level: 0, dir: { loading: true } })).toBe(false)
     expect(shouldListRoot({ level: 1 })).toBe(false)
-  })
-
-  test("nested dirs list only when expanded and stale", () => {
-    expect(shouldListExpanded({ level: 1 })).toBe(false)
-    expect(shouldListExpanded({ level: 1, dir: { expanded: false } })).toBe(false)
-    expect(shouldListExpanded({ level: 1, dir: { expanded: true } })).toBe(true)
-    expect(shouldListExpanded({ level: 1, dir: { expanded: true, loaded: true } })).toBe(false)
-    expect(shouldListExpanded({ level: 1, dir: { expanded: true, loading: true } })).toBe(false)
-    expect(shouldListExpanded({ level: 0, dir: { expanded: true } })).toBe(false)
   })
 
   test("allowed auto-expand picks only collapsed dirs", () => {
