@@ -1,6 +1,25 @@
 import type { SessionV1 } from "@opencode-ai/core/v1/session"
+import type {
+  IssueCommentEvent,
+  IssuesEvent,
+  PullRequestReviewCommentEvent,
+  WorkflowDispatchEvent,
+  WorkflowRunEvent,
+  PullRequestEvent,
+} from "@octokit/webhooks-types"
 
 export { parseGitHubRemote } from "@/util/repository"
+
+/**
+ * Event payload union handled by the GitHub Actions handler.
+ */
+export type GithubEventPayload =
+  | IssueCommentEvent
+  | IssuesEvent
+  | PullRequestReviewCommentEvent
+  | WorkflowDispatchEvent
+  | WorkflowRunEvent
+  | PullRequestEvent
 
 /**
  * Extracts displayable text from assistant response parts.
@@ -27,4 +46,20 @@ export function formatPromptTooLargeError(files: { filename: string; content: st
       ? `\n\nFiles in prompt:\n${files.map((f) => `  - ${f.filename} (${((f.content.length * 0.75) / 1024).toFixed(0)} KB)`).join("\n")}`
       : ""
   return `PROMPT_TOO_LARGE: The prompt exceeds the model's context limit.${fileDetails}`
+}
+
+/**
+ * Fallback commit/PR title used when summarization fails.
+ *
+ * Handles events that lack a `pull_request` field (`issues`, `schedule`,
+ * `workflow_dispatch`) explicitly instead of unsafely casting the payload to
+ * `PullRequestReviewCommentEvent`, which would throw
+ * `TypeError: Cannot read properties of undefined (reading 'title')` and mask
+ * the real summarization failure (provider error, rate limit, network error).
+ */
+export function summarizeFallbackTitle(payload: GithubEventPayload, issueEvent?: IssueCommentEvent): string {
+  if (issueEvent) return issueEvent.issue.title
+  if ("pull_request" in payload) return payload.pull_request.title
+  if ("issue" in payload) return payload.issue.title
+  return "opencode run"
 }

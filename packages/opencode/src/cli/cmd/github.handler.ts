@@ -33,7 +33,7 @@ import { setTimeout as sleep } from "node:timers/promises"
 import { Process } from "@/util/process"
 import { parseGitHubRemote } from "@/util/repository"
 import { Effect } from "effect"
-import { extractResponseText, formatPromptTooLargeError } from "./github.shared"
+import { extractResponseText, formatPromptTooLargeError, summarizeFallbackTitle } from "./github.shared"
 
 type GitHubAuthor = {
   login: string
@@ -879,9 +879,7 @@ export const githubRun = Effect.fn("Cli.github.run")(function* (args: { event?: 
       try {
         return await chat(`Summarize the following in less than 40 characters:\n\n${response}`)
       } catch {
-        const title = issueEvent
-          ? issueEvent.issue.title
-          : (payload as PullRequestReviewCommentEvent).pull_request.title
+        const title = summarizeFallbackTitle(payload, issueEvent)
         return `Fix issue: ${title}`
       }
     }
