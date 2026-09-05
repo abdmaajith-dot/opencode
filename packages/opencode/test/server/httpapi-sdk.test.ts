@@ -19,6 +19,7 @@ import { MessageV2 } from "../../src/session/message-v2"
 
 import type { Config } from "@/config/config"
 import { Session as SessionNs } from "@/session/session"
+import { TuiEvent } from "@/server/tui-event"
 import { errorMessage } from "../../src/util/error"
 import { TestLLMServer } from "../lib/llm-server"
 import path from "path"
@@ -881,6 +882,79 @@ describe("HttpApi SDK", () => {
             selectSession: selectSession.data,
           },
         }
+      }),
+    ),
+  )
+
+  // Regression: each `open*` / prompt TUI handler must publish the exact
+  // command the TUI registers for its dialog, not a sibling's command. The
+  // bug: `openThemes` published `"session.list"` (opening the session dialog)
+  // instead of `"theme.switch"`. Drives the full SDK → handler →
+  // EventV2Bridge.publish → /event subscriber path and asserts each published
+  // `tui.command.execute` command, so a copy-paste regression in any sibling
+  // handler (openHelp/openSessions/openThemes/openModels/submitPrompt/
+  // clearPrompt/executeCommand) fails the test.
+  serverPathParity("publishes the registered command for each TUI open/prompt handler", (serverPath) =>
+    withStandardProject(serverPath, ({ sdk }) =>
+      Effect.gen(function* () {
+        const controller = new AbortController()
+        yield* Effect.addFinalizer(() => Effect.sync(() => controller.abort()))
+        const events = yield* call(() => sdk.event.subscribe(undefined, { signal: controller.signal }))
+        yield* Effect.addFinalizer(() =>
+          call(async () => void (await events.stream.return?.(undefined))).pipe(Effect.ignore),
+        )
+
+        const steps: Array<{ trigger: () => Promise<SdkResult>; command: string }> = [
+          { trigger: () => sdk.tui.openHelp(), command: "help.show" },
+          { trigger: () => sdk.tui.openSessions(), command: "session.list" },
+          { trigger: () => sdk.tui.openThemes(), command: "theme.switch" },
+          { trigger: () => sdk.tui.openModels(), command: "model.list" },
+          { trigger: () => sdk.tui.submitPrompt(), command: "prompt.submit" },
+          { trigger: () => sdk.tui.clearPrompt(), command: "prompt.clear" },
+          { trigger: () => sdk.tui.executeCommand({ command: "session_new" }), command: "session.new" },
+        ]
+        const received = yield* Effect.all(steps.map(() => Deferred.make<string>()))
+        let index = 0
+
+        const ready = yield* Deferred.make<void>()
+        yield* call(async () => {
+          for await (const event of events.stream) {
+            const payload = record(event).payload ?? event
+            const type = record(payload).type
+            if (type === "server.connected") {
+              Deferred.doneUnsafe(ready, Effect.void)
+              continue
+            }
+            if (type === TuiEvent.CommandExecute.type) {
+              const i = index++
+              if (i < received.length)
+                Deferred.doneUnsafe(
+                  received[i],
+                  Effect.succeed(String(record(record(payload).properties).command)),
+                )
+            }
+          }
+        }).pipe(Effect.forkScoped)
+
+        yield* awaitWithTimeout(Deferred.await(ready), "timed out waiting for /event server.connected", "2 seconds")
+
+        // Trigger sequentially so published events arrive in `steps` order,
+        // which the consumer pairs with `received[i]` by arrival index.
+        for (const step of steps) {
+          const res = yield* capture(step.trigger)
+          expect(res.status).toBe(200)
+        }
+
+        for (let i = 0; i < steps.length; i++) {
+          const command = yield* awaitWithTimeout(
+            Deferred.await(received[i]),
+            `timed out waiting for tui.command.execute #${i} (${steps[i].command})`,
+            "5 seconds",
+          )
+          expect(command).toBe(steps[i].command)
+        }
+
+        return { commands: steps.map((step) => step.command) }
       }),
     ),
   )
