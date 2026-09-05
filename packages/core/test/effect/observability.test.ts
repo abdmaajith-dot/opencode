@@ -5,7 +5,7 @@ import fs from "fs/promises"
 import os from "os"
 import path from "path"
 import { fileLogger } from "../../src/observability/logging"
-import { resource } from "../../src/observability/otlp"
+import { exportUrl, resource } from "../../src/observability/otlp"
 
 const otelResourceAttributes = process.env.OTEL_RESOURCE_ATTRIBUTES
 const opencodeClient = process.env.OPENCODE_CLIENT
@@ -49,6 +49,32 @@ describe("resource", () => {
     })
     expect(resource().attributes["service.instance.id"]).not.toBe("override")
     expect(resource().attributes["opencode.run"]).toMatch(/^[0-9a-f]{8}$/)
+  })
+})
+
+describe("exportUrl", () => {
+  test("appends the signal path to an endpoint without a trailing slash", () => {
+    expect(exportUrl("http://localhost:4318", "traces")).toBe("http://localhost:4318/v1/traces")
+    expect(exportUrl("http://localhost:4318", "logs")).toBe("http://localhost:4318/v1/logs")
+  })
+
+  test("strips a single trailing slash before appending the signal path", () => {
+    expect(exportUrl("http://localhost:4318/", "traces")).toBe("http://localhost:4318/v1/traces")
+    expect(exportUrl("http://localhost:4318/", "logs")).toBe("http://localhost:4318/v1/logs")
+  })
+
+  test("strips multiple trailing slashes before appending the signal path", () => {
+    expect(exportUrl("http://localhost:4318///", "traces")).toBe("http://localhost:4318/v1/traces")
+    expect(exportUrl("http://localhost:4318//", "logs")).toBe("http://localhost:4318/v1/logs")
+  })
+
+  test("produces a URL whose pathname has no doubled separator on the wire", () => {
+    // `new URL(...)` does not collapse a doubled leading separator on the pathname, so this
+    // guards the exact wire-level defect: a trailing-slash endpoint must not reach the wire as
+    // `//v1/traces`.
+    expect(new URL(exportUrl("http://localhost:4318/", "traces")).pathname).toBe("/v1/traces")
+    expect(new URL(exportUrl("http://localhost:4318/", "logs")).pathname).toBe("/v1/logs")
+    expect(new URL(exportUrl("http://localhost:4318", "traces")).pathname).toBe("/v1/traces")
   })
 })
 

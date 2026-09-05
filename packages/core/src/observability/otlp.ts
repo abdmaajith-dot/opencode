@@ -6,6 +6,10 @@ import { runID } from "./shared"
 
 const endpoint = Flag.OTEL_EXPORTER_OTLP_ENDPOINT
 
+export function exportUrl(endpoint: string, signal: "logs" | "traces"): string {
+  return `${endpoint.replace(/\/+$/, "")}/v1/${signal}`
+}
+
 const headers = Flag.OTEL_EXPORTER_OTLP_HEADERS
   ? Flag.OTEL_EXPORTER_OTLP_HEADERS.split(",").reduce(
       (acc, entry) => {
@@ -49,7 +53,7 @@ export function resource(): { serviceName: string; serviceVersion: string; attri
 
 export function loggers() {
   if (!endpoint) return []
-  return [OtlpLogger.make({ url: `${endpoint}/v1/logs`, resource: resource(), headers })]
+  return [OtlpLogger.make({ url: exportUrl(endpoint, "logs"), resource: resource(), headers })]
 }
 
 export async function tracingLayer() {
@@ -69,7 +73,7 @@ export async function tracingLayer() {
     resource: resource(),
     spanProcessor: new SdkBase.BatchSpanProcessor(
       new OTLP.OTLPTraceExporter({
-        url: `${endpoint}/v1/traces`,
+        url: exportUrl(endpoint, "traces"),
         headers,
       }),
     ),
