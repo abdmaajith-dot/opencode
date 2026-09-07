@@ -14,17 +14,13 @@ let counter = 0
 type Prefix = keyof typeof prefixes
 export namespace Identifier {
   export function ascending(prefix: Prefix, given?: string) {
-    return generateID(prefix, false, given)
-  }
-
-  export function descending(prefix: Prefix, given?: string) {
-    return generateID(prefix, true, given)
+    return generateID(prefix, given)
   }
 }
 
-function generateID(prefix: Prefix, descending: boolean, given?: string): string {
+function generateID(prefix: Prefix, given?: string): string {
   if (!given) {
-    return create(prefix, descending)
+    return create(prefix)
   }
 
   if (!given.startsWith(prefixes[prefix])) {
@@ -34,7 +30,7 @@ function generateID(prefix: Prefix, descending: boolean, given?: string): string
   return given
 }
 
-function create(prefix: Prefix, descending: boolean, timestamp?: number): string {
+function create(prefix: Prefix, timestamp?: number): string {
   const currentTimestamp = timestamp ?? Date.now()
 
   if (currentTimestamp !== lastTimestamp) {
@@ -45,10 +41,6 @@ function create(prefix: Prefix, descending: boolean, timestamp?: number): string
   counter += 1
 
   let now = BigInt(currentTimestamp) * BigInt(0x1000) + BigInt(counter)
-
-  if (descending) {
-    now = ~now
-  }
 
   const timeBytes = new Uint8Array(6)
   for (let i = 0; i < 6; i += 1) {
