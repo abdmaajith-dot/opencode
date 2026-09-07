@@ -374,21 +374,6 @@ function createWorkspaceTerminalSession(
     async clone(id: string) {
       await clone(id)
     },
-    bind() {
-      return {
-        trim(id: string) {
-          const index = store.all.findIndex((x) => x.id === id)
-          if (index === -1) return
-          setStore("all", index, (pty) => trimTerminal(pty))
-        },
-        update(pty: Partial<LocalPTY> & { id: string }) {
-          update(pty)
-        },
-        async clone(id: string) {
-          await clone(id)
-        },
-      }
-    },
     open(id: string) {
       setStore("active", id)
     },
