@@ -44,27 +44,10 @@ export function createPromptModelSelection(input: { agent: () => { model?: Model
     if (!key) return
     return models.find(key)
   }
-  const recentModels = createMemo(() =>
-    models.recent
-      .list()
-      .map(models.find)
-      .filter((item): item is NonNullable<typeof item> => !!item),
-  )
 
   const selection = {
-    ready: models.ready,
     current,
-    recent: recentModels,
     list: models.list,
-    cycle(direction: 1 | -1) {
-      const items = recentModels()
-      const item = current()
-      if (!item) return
-      const index = items.findIndex((entry) => entry.provider.id === item.provider.id && entry.id === item.id)
-      if (index === -1) return
-      const next = items[(index + direction + items.length) % items.length]
-      if (next) selection.set({ providerID: next.provider.id, modelID: next.id })
-    },
     set(item: ModelKey | undefined, options?: { recent?: boolean }) {
       startTransition(() =>
         batch(() => {

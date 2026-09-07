@@ -276,29 +276,9 @@ export const { use: useLocal, provider: LocalProvider } = createSimpleContext({
       setStore("draft", state)
     }
 
-    const recent = createMemo(() => models.recent.list().map(models.find).filter(Boolean))
-
     const model = {
-      ready: models.ready,
       current,
-      recent,
       list: models.list,
-      cycle(direction: 1 | -1) {
-        const items = recent()
-        const item = current()
-        if (!item) return
-
-        const index = items.findIndex((entry) => entry?.provider.id === item.provider.id && entry?.id === item.id)
-        if (index === -1) return
-
-        let next = index + direction
-        if (next < 0) next = items.length - 1
-        if (next >= items.length) next = 0
-
-        const entry = items[next]
-        if (!entry) return
-        model.set({ providerID: entry.provider.id, modelID: entry.id })
-      },
       set(item: ModelKey | undefined, options?: { recent?: boolean }) {
         startTransition(() =>
           batch(() => {
