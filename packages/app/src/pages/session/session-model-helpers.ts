@@ -25,10 +25,6 @@ type PromptState = {
   }
 }
 
-export const resetSessionModel = (local: Local) => {
-  local.session.reset()
-}
-
 export const syncSessionModel = (local: Local, msg: UserMessage) => {
   local.session.restore(msg)
 }
