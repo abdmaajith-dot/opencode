@@ -13,6 +13,8 @@ import { Truncate } from "@/tool/truncate"
 import { TestInstance } from "../fixture/fixture"
 import { SessionID, MessageID } from "../../src/session/schema"
 import { testEffect } from "../lib/effect"
+import { Permission } from "../../src/permission"
+import { PermissionV1 } from "@opencode-ai/core/v1/permission"
 
 const it = testEffect(
   LayerNode.compile(
@@ -66,6 +68,30 @@ const makeCtx = () => {
     ask: (input) =>
       Effect.sync(() => {
         calls.push(input)
+      }),
+  }
+
+  return { ctx, calls }
+}
+
+// A ctx whose `ask` mirrors `Permission.ask` under `--auto` mode: any pattern
+// matching a `deny` rule throws `PermissionV1.DeniedError`, while `allow`/`ask`
+// proceed (ask is auto-approved). This exercises the real ruleset evaluation
+// against the patterns apply_patch passes, proving destination-scoped rules
+// are enforced end-to-end.
+const makePermissionCtx = (ruleset: PermissionV1.Ruleset) => {
+  const calls: AskInput[] = []
+  const ctx: ToolCtx = {
+    ...baseCtx,
+    ask: (input) =>
+      Effect.sync(() => {
+        calls.push(input)
+        for (const pattern of input.patterns) {
+          const rule = Permission.evaluate(input.permission, pattern, ruleset)
+          if (rule.action === "deny") {
+            throw new PermissionV1.DeniedError({ ruleset })
+          }
+        }
       }),
   }
 
@@ -180,6 +206,85 @@ describe("tool.apply_patch freeform", () => {
         expect(moveFile.movePath).toBe(path.join(test.directory, "renamed/dir/name.txt"))
         expect(moveFile.patch).toContain("-old content")
         expect(moveFile.patch).toContain("+new content")
+      }),
+    { git: true },
+  )
+
+  it.instance(
+    "move includes destination in permission patterns",
+    () =>
+      Effect.gen(function* () {
+        const test = yield* TestInstance
+        const { ctx, calls } = makeCtx()
+        const src = path.join(test.directory, "public", "notes.txt")
+        yield* makeDir(path.dirname(src))
+        yield* writeText(src, "hello\n")
+
+        const patchText =
+          "*** Begin Patch\n*** Update File: public/notes.txt\n*** Move to: secret/notes.txt\n@@\n-hello\n+hello\n*** End Patch"
+
+        yield* execute({ patchText }, ctx)
+
+        expect(calls.length).toBe(1)
+        // Both the move source and the destination must reach the `edit`
+        // ruleset; omitting the destination silently bypasses destination-
+        // scoped deny/ask/allow policies.
+        expect(calls[0].patterns).toContain("public/notes.txt")
+        expect(calls[0].patterns).toContain("secret/notes.txt")
+        expect(calls[0].metadata.files).toHaveLength(1)
+      }),
+    { git: true },
+  )
+
+  it.instance(
+    "destination-scoped edit deny blocks a move (auto mode)",
+    () =>
+      Effect.gen(function* () {
+        const test = yield* TestInstance
+        const ruleset = Permission.fromConfig({ edit: { "secret/*": "deny" } })
+        const { ctx, calls } = makePermissionCtx(ruleset)
+        const src = path.join(test.directory, "public", "notes.txt")
+        yield* makeDir(path.dirname(src))
+        yield* writeText(src, "hello\n")
+
+        const patchText =
+          "*** Begin Patch\n*** Update File: public/notes.txt\n*** Move to: secret/notes.txt\n@@\n-hello\n+hello\n*** End Patch"
+
+        yield* expectFailure(execute({ patchText }, ctx))
+
+        // The destination deny rule is enforced: nothing is written under
+        // secret/ and the source is left untouched.
+        yield* expectReadFailure(path.join(test.directory, "secret", "notes.txt"))
+        expect(yield* readText(src)).toBe("hello\n")
+        // Sanity: both source and destination were evaluated.
+        expect(calls[0].patterns).toContain("public/notes.txt")
+        expect(calls[0].patterns).toContain("secret/notes.txt")
+      }),
+    { git: true },
+  )
+
+  it.instance(
+    "move into non-denied destination still succeeds through the ruleset",
+    () =>
+      Effect.gen(function* () {
+        const test = yield* TestInstance
+        // deny only applies to secret/*; moving into allowed/ must succeed.
+        const ruleset = Permission.fromConfig({ edit: { "secret/*": "deny" } })
+        const { ctx, calls } = makePermissionCtx(ruleset)
+        const src = path.join(test.directory, "public", "notes.txt")
+        yield* makeDir(path.dirname(src))
+        yield* writeText(src, "hello\n")
+
+        const patchText =
+          "*** Begin Patch\n*** Update File: public/notes.txt\n*** Move to: allowed/notes.txt\n@@\n-hello\n+world\n*** End Patch"
+
+        const result = yield* execute({ patchText }, ctx)
+
+        expect(result.title).toContain("Success. Updated the following files")
+        expect(calls[0].patterns).toContain("public/notes.txt")
+        expect(calls[0].patterns).toContain("allowed/notes.txt")
+        yield* expectReadFailure(src)
+        expect(yield* readText(path.join(test.directory, "allowed", "notes.txt"))).toBe("world\n")
       }),
     { git: true },
   )
