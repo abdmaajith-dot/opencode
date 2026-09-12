@@ -186,10 +186,11 @@ export const { use: useEditorContext, provider: EditorContextProvider } = create
           return
         }
 
+        const pollDirectory = directory
         zedSelection ??= editor
           .selection(directory)
           .then((result) => {
-            if (closed || socket) return
+            if (closed || socket || directory !== pollDirectory) return
             if (!isRecord(result) || result.type === "unavailable") return
             const decoded = result.type === "selection" ? decodeEditorSelection(result.selection) : Option.none()
             const selection = Option.getOrUndefined(decoded)
@@ -305,6 +306,7 @@ export const { use: useEditorContext, provider: EditorContextProvider } = create
       }
       setStore("status", "disabled")
       setStore("server", undefined)
+      zedSelection = undefined
       connect()
     }
 
