@@ -74,6 +74,38 @@ describe("util.repository", () => {
     )
   })
 
+  test("rejects a bare .. or . host segment so repositoryCachePath cannot escape the repos root", () => {
+    expect(parseRepositoryReference("../log")).toBeNull()
+    expect(parseRepositoryReference("../owner/repo")).toBeNull()
+    expect(parseRepositoryReference("./log")).toBeNull()
+    expect(parseRepositoryReference("..:owner/repo")).toBeNull()
+    expect(parseRepositoryReference(".:owner/repo")).toBeNull()
+    expect(() => parseRemoteRepositoryReference("../log")).toThrow(InvalidRepositoryReferenceError)
+    expect(() => parseRemoteRepositoryReference("../owner/repo")).toThrow(InvalidRepositoryReferenceError)
+    expect(() => parseRemoteRepositoryReference("./log")).toThrow(InvalidRepositoryReferenceError)
+    expect(() => parseRemoteRepositoryReference("..:owner/repo")).toThrow(InvalidRepositoryReferenceError)
+    expect(() => parseRemoteRepositoryReference(".:owner/repo")).toThrow(InvalidRepositoryReferenceError)
+    expect(() => parseRemoteRepositoryReference("git@..:owner/repo")).toThrow(InvalidRepositoryReferenceError)
+  })
+
+  test("keeps repository cache paths inside the repos root for every accepted reference", () => {
+    const root = Global.Path.repos
+    const samples = [
+      "owner/repo",
+      "github:owner/repo",
+      "github.com/owner/repo",
+      "gitlab.com/group/repo",
+      "git@github.com:owner/repo.git",
+      "https://github.com/owner/repo.git",
+    ]
+    for (const input of samples) {
+      const reference = parseRemoteRepositoryReference(input)
+      const cached = repositoryCachePath(reference)
+      const rel = path.relative(root, cached)
+      expect(rel === "" || (!path.isAbsolute(rel) && !rel.startsWith(".."))).toBe(true)
+    }
+  })
+
   test("compares cache identity independent of input spelling", () => {
     const shorthand = parseRemoteRepositoryReference("owner/repo")
     const url = parseRemoteRepositoryReference("https://github.com/owner/repo.git")

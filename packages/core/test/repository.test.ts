@@ -62,6 +62,40 @@ describe("Repository", () => {
     expect(() => Repository.validateBranch("bad branch")).toThrow(Repository.InvalidBranchError)
   })
 
+  test("rejects a bare .. or . host segment so cachePath cannot escape the cache root", () => {
+    expect(Repository.parse("../log")).toBeUndefined()
+    expect(Repository.parse("../owner/repo")).toBeUndefined()
+    expect(Repository.parse("./log")).toBeUndefined()
+    expect(Repository.parse("..:owner/repo")).toBeUndefined()
+    expect(Repository.parse(".:owner/repo")).toBeUndefined()
+    expect(() => Repository.parseRemote("../log")).toThrow(Repository.InvalidReferenceError)
+    expect(() => Repository.parseRemote("../owner/repo")).toThrow(Repository.InvalidReferenceError)
+    expect(() => Repository.parseRemote("./log")).toThrow(Repository.InvalidReferenceError)
+    expect(() => Repository.parseRemote("..:owner/repo")).toThrow(Repository.InvalidReferenceError)
+    expect(() => Repository.parseRemote(".:owner/repo")).toThrow(Repository.InvalidReferenceError)
+    expect(() => Repository.parseRemote("git@..:owner/repo")).toThrow(Repository.InvalidReferenceError)
+  })
+
+  test("keeps cache paths inside the cache root for every accepted reference", () => {
+    const root = path.join("/cache", "repos")
+    const samples = [
+      "owner/repo",
+      "github:owner/repo",
+      "github.com/owner/repo",
+      "gitlab.com/group/repo",
+      "git@github.com:owner/repo.git",
+      "https://github.com/owner/repo.git",
+    ]
+    for (const input of samples) {
+      const reference = Repository.parseRemote(input)
+      for (const branch of [undefined, "main", "feature/x"] as const) {
+        const cached = Repository.cachePath(root, reference, branch)
+        const rel = path.relative(root, cached)
+        expect(rel === "" || (!path.isAbsolute(rel) && !rel.startsWith(".."))).toBe(true)
+      }
+    }
+  })
+
   test("compares cache identity independent of input spelling", () => {
     const shorthand = Repository.parseRemote("owner/repo")
 

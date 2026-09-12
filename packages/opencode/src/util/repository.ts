@@ -81,7 +81,7 @@ function parts(input: string) {
 }
 
 function safeHost(input: string) {
-  return Boolean(input) && !input.startsWith("-") && !/[\s/\\]/.test(input)
+  return input !== "." && input !== ".." && Boolean(input) && !input.startsWith("-") && !/[\s/\\]/.test(input)
 }
 
 function safeSegment(input: string) {
