@@ -12,7 +12,7 @@ import { Workspace } from "@opencode-ai/console-core/workspace.js"
 import { Actor } from "@opencode-ai/console-core/actor.js"
 import { Resource } from "@opencode-ai/console-resource"
 import { User } from "@opencode-ai/console-core/user.js"
-import { and, Database, eq, isNull, or } from "@opencode-ai/console-core/drizzle/index.js"
+import { and, Database, eq, isNull, ne, or } from "@opencode-ai/console-core/drizzle/index.js"
 import { WorkspaceTable } from "@opencode-ai/console-core/schema/workspace.sql.js"
 import { UserTable } from "@opencode-ai/console-core/schema/user.sql.js"
 import { AuthTable } from "@opencode-ai/console-core/schema/auth.sql.js"
@@ -161,7 +161,22 @@ export default {
           )
           const idByProvider = matches.find((x) => x.provider === response.provider)?.accountID
           const idByEmail = matches.find((x) => x.provider === "email")?.accountID
-          if (idByProvider && idByEmail) return idByProvider
+          if (idByProvider && idByEmail) {
+            if (idByProvider === idByEmail) {
+              await Database.use(async (tx) =>
+                tx
+                  .delete(AuthTable)
+                  .where(
+                    and(
+                      eq(AuthTable.accountID, idByProvider),
+                      eq(AuthTable.provider, "email"),
+                      ne(AuthTable.subject, email),
+                    ),
+                  ),
+              )
+            }
+            return idByProvider
+          }
 
           // create account if not found
           let accountID = idByProvider ?? idByEmail
@@ -171,8 +186,13 @@ export default {
             newAccount = true
           }
 
-          await Database.use(async (tx) =>
-            tx
+          await Database.use(async (tx) => {
+            await tx
+              .delete(AuthTable)
+              .where(
+                and(eq(AuthTable.accountID, accountID), eq(AuthTable.provider, "email"), ne(AuthTable.subject, email)),
+              )
+            await tx
               .insert(AuthTable)
               .values([
                 {
@@ -192,8 +212,8 @@ export default {
                 set: {
                   timeDeleted: null,
                 },
-              }),
-          )
+              })
+          })
 
           return accountID
         })()
