@@ -32,22 +32,6 @@ const map = {
   [formError.providerRequired]: "error.providerRequired",
   [formError.apiKeyRequired]: "error.apiKeyRequired",
   [formError.modelRequired]: "error.modelRequired",
-  "Invalid plan": "error.invalidPlan",
-  "Workspace ID is required": "error.workspaceRequired",
-  "Workspace ID is required.": "error.workspaceRequired",
-  "This workspace already has a subscription": "error.alreadySubscribed",
-  "Limit is required.": "error.limitRequired",
-  "Set a valid monthly limit": "error.monthlyLimitInvalid",
-  "Set a valid monthly limit.": "error.monthlyLimitInvalid",
-  "Workspace name is required.": "error.workspaceNameRequired",
-  "Name must be 255 characters or less.": "error.nameTooLong",
-  "Email is required": "error.emailRequired",
-  "Role is required": "error.roleRequired",
-  "ID is required": "error.idRequired",
-  "Name is required": "error.nameRequired",
-  "Provider is required": "error.providerRequired",
-  "API key is required": "error.apiKeyRequired",
-  "Model is required": "error.modelRequired",
   "workspace.reload.error.paymentFailed": "workspace.reload.error.paymentFailed",
   "Payment failed": "workspace.reload.error.paymentFailed",
   "Payment failed.": "workspace.reload.error.paymentFailed",
@@ -73,12 +57,6 @@ export function localizeError(t: (key: Key, params?: Record<string, string | num
     const amount = Number(error.split(":")[1] ?? 0)
     return t("error.reloadTriggerMin", { amount })
   }
-
-  const amount = error.match(/^Reload amount must be at least \$(\d+)$/)
-  if (amount) return t("error.reloadAmountMin", { amount: Number(amount[1]) })
-
-  const trigger = error.match(/^Balance trigger must be at least \$(\d+)$/)
-  if (trigger) return t("error.reloadTriggerMin", { amount: Number(trigger[1]) })
 
   const key = map[error as keyof typeof map]
   if (key) return t(key)
