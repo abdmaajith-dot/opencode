@@ -274,28 +274,6 @@ export const dict = {
   "go.graph.usageLimits": "利用制限",
   "go.graph.aria": "5時間あたりのリクエスト数: {{free}} 対 {{go}}",
 
-  "go.testimonials.brand.zen": "Zen",
-  "go.testimonials.brand.go": "Go",
-  "go.testimonials.handle": "@OpenCode",
-  "go.testimonials.dax.name": "Dax Raad",
-  "go.testimonials.dax.title": "元CEO, Terminal Products",
-  "go.testimonials.dax.quoteAfter": "は人生を変えるものでした。本当に迷う必要はありません。",
-  "go.testimonials.jay.name": "Jay V",
-  "go.testimonials.jay.title": "元創業者, SEED, PM, Melt, Pop, Dapt, Cadmus, ViewPoint",
-  "go.testimonials.jay.quoteBefore": "チームの5人中4人が",
-  "go.testimonials.jay.quoteAfter": "の使用を気に入っています。",
-  "go.testimonials.adam.name": "Adam Elmore",
-  "go.testimonials.adam.title": "元Hero, AWS",
-  "go.testimonials.adam.quoteBefore": "私は",
-  "go.testimonials.adam.quoteAfter": "をどれだけ推薦してもしきれません。真剣に、本当に良いです。",
-  "go.testimonials.david.name": "David Hill",
-  "go.testimonials.david.title": "元デザイン責任者, Laravel",
-  "go.testimonials.david.quoteBefore": "",
-  "go.testimonials.david.quoteAfter":
-    "を使えば、すべてのモデルがテスト済みでコーディングエージェントに最適だと確信できます。",
-  "go.testimonials.frank.name": "Frank Wang",
-  "go.testimonials.frank.title": "元インターン, Nvidia (4回)",
-  "go.testimonials.frank.quote": "まだNvidiaにいられたらよかったのに。",
   "go.problem.title": "Goはどのような問題を解決していますか？",
   "go.problem.body":
     "私たちはOpenCodeの体験をできるだけ多くの人に届けることに注力しています。OpenCode Goは低価格のサブスクリプションで、最初の月は$5、その後は$10/月です。ゆとりある上限と、最も高性能なオープンソースモデルへの信頼できるアクセスを提供します。",
@@ -315,13 +293,6 @@ export const dict = {
   "go.how.step2.afterLink": "その後$10/月、ゆとりある上限付き",
   "go.how.step3.title": "コーディングを開始",
   "go.how.step3.body": "オープンソースモデルへの安定したアクセスで",
-  "go.privacy.title": "あなたのプライバシーは私たちにとって重要です",
-  "go.privacy.body":
-    "このプランは主に海外ユーザー向けに設計されており、米国、EU、シンガポールでホストされたモデルにより安定したグローバルアクセスを提供します。",
-  "go.privacy.contactAfter": "ご質問がございましたら。",
-  "go.privacy.beforeExceptions":
-    "Goのモデルは米国でホストされています。プロバイダーはゼロ保持ポリシーに従い、モデルのトレーニングにデータを使用しません（",
-  "go.privacy.exceptionsLink": "以下の例外",
   "go.faq.q1": "OpenCode Goとは？",
   "go.faq.a1":
     "Goは、エージェント型コーディングのための有能なオープンソースモデルへの安定したアクセスを提供する低価格なサブスクリプションです。",
@@ -340,9 +311,6 @@ export const dict = {
   "go.faq.q5": "データとプライバシーは？",
   "go.faq.a5.body":
     "このプランは主に海外ユーザー向けに設計されており、米国、EU、シンガポールでホストされたモデルにより安定したグローバルアクセスを提供します。プロバイダーはゼロ保持ポリシーに従い、お客様のデータをモデルのトレーニングに使用しません。",
-  "go.faq.a5.beforeExceptions":
-    "Goのモデルは米国でホストされています。プロバイダーはゼロ保持ポリシーに従い、モデルのトレーニングにデータを使用しません（",
-  "go.faq.a5.exceptionsLink": "以下の例外",
   "go.faq.q6": "クレジットをチャージできますか？",
   "go.faq.a6": "利用枠を追加したい場合は、アカウントでクレジットをチャージできます。",
   "go.faq.q7": "キャンセルできますか？",

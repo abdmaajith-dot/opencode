@@ -279,28 +279,6 @@ export const dict = {
   "go.graph.usageLimits": "Лимиты использования",
   "go.graph.aria": "Запросов за 5ч: {{free}} против {{go}}",
 
-  "go.testimonials.brand.zen": "Zen",
-  "go.testimonials.brand.go": "Go",
-  "go.testimonials.handle": "@OpenCode",
-  "go.testimonials.dax.name": "Dax Raad",
-  "go.testimonials.dax.title": "ex-CEO, Terminal Products",
-  "go.testimonials.dax.quoteAfter": "изменил мою жизнь, это действительно очевидный выбор.",
-  "go.testimonials.jay.name": "Jay V",
-  "go.testimonials.jay.title": "ex-Founder, SEED, PM, Melt, Pop, Dapt, Cadmus, и ViewPoint",
-  "go.testimonials.jay.quoteBefore": "4 из 5 человек в нашей команде любят использовать",
-  "go.testimonials.jay.quoteAfter": ".",
-  "go.testimonials.adam.name": "Adam Elmore",
-  "go.testimonials.adam.title": "ex-Hero, AWS",
-  "go.testimonials.adam.quoteBefore": "Я не могу не порекомендовать",
-  "go.testimonials.adam.quoteAfter": "достаточно сильно. Серьезно, это очень круто.",
-  "go.testimonials.david.name": "David Hill",
-  "go.testimonials.david.title": "ex-Head of Design, Laravel",
-  "go.testimonials.david.quoteBefore": "С",
-  "go.testimonials.david.quoteAfter":
-    "я знаю, что все модели протестированы и идеально подходят для агентов-программистов.",
-  "go.testimonials.frank.name": "Frank Wang",
-  "go.testimonials.frank.title": "ex-Intern, Nvidia (4 раза)",
-  "go.testimonials.frank.quote": "Жаль, что я больше не в Nvidia.",
   "go.problem.title": "Какую проблему решает Go?",
   "go.problem.body":
     "Мы стремимся сделать OpenCode доступным для как можно большего числа людей. OpenCode Go - это недорогая подписка: $5 за первый месяц, затем $10/месяц. Она предоставляет щедрые лимиты и надежный доступ к самым мощным моделям с открытым исходным кодом.",
@@ -321,13 +299,6 @@ export const dict = {
   "go.how.step2.afterLink": "затем $10/месяц с щедрыми лимитами",
   "go.how.step3.title": "Начните кодить",
   "go.how.step3.body": "с надежным доступом к open-source моделям",
-  "go.privacy.title": "Ваша приватность важна для нас",
-  "go.privacy.body":
-    "План разработан в первую очередь для международных пользователей, с моделями, размещенными в США, ЕС и Сингапуре для стабильного глобального доступа.",
-  "go.privacy.contactAfter": "если у вас есть вопросы.",
-  "go.privacy.beforeExceptions":
-    "Модели Go размещены в США. Провайдеры следуют политике нулевого хранения и не используют ваши данные для обучения моделей, за",
-  "go.privacy.exceptionsLink": "следующими исключениями",
   "go.faq.q1": "Что такое OpenCode Go?",
   "go.faq.a1":
     "Go — это недорогая подписка, дающая надежный доступ к мощным моделям с открытым исходным кодом для агентов-программистов.",
@@ -346,9 +317,6 @@ export const dict = {
   "go.faq.q5": "Как насчет данных и приватности?",
   "go.faq.a5.body":
     "План разработан в первую очередь для международных пользователей, с моделями, размещенными в США, ЕС и Сингапуре для стабильного глобального доступа. Наши провайдеры следуют политике нулевого хранения и не используют ваши данные для обучения моделей.",
-  "go.faq.a5.beforeExceptions":
-    "Модели Go размещены в США. Провайдеры следуют политике нулевого хранения и не используют ваши данные для обучения моделей, за",
-  "go.faq.a5.exceptionsLink": "следующими исключениями",
   "go.faq.q6": "Могу ли я пополнить баланс?",
   "go.faq.a6": "Если вам нужно больше использования, вы можете пополнить баланс в своем аккаунте.",
   "go.faq.q7": "Могу ли я отменить подписку?",

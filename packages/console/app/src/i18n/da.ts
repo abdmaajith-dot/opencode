@@ -275,27 +275,6 @@ export const dict = {
   "go.graph.usageLimits": "Brugsgrænser",
   "go.graph.aria": "Forespørgsler pr. 5t: {{free}} vs {{go}}",
 
-  "go.testimonials.brand.zen": "Zen",
-  "go.testimonials.brand.go": "Go",
-  "go.testimonials.handle": "@OpenCode",
-  "go.testimonials.dax.name": "Dax Raad",
-  "go.testimonials.dax.title": "ex-CEO, Terminal Products",
-  "go.testimonials.dax.quoteAfter": "har været livsændrende, det er virkelig en no-brainer.",
-  "go.testimonials.jay.name": "Jay V",
-  "go.testimonials.jay.title": "ex-Founder, SEED, PM, Melt, Pop, Dapt, Cadmus, og ViewPoint",
-  "go.testimonials.jay.quoteBefore": "4 ud af 5 personer på vores team elsker at bruge",
-  "go.testimonials.jay.quoteAfter": ".",
-  "go.testimonials.adam.name": "Adam Elmore",
-  "go.testimonials.adam.title": "ex-Hero, AWS",
-  "go.testimonials.adam.quoteBefore": "Jeg kan ikke anbefale",
-  "go.testimonials.adam.quoteAfter": "nok. Seriøst, det er virkelig godt.",
-  "go.testimonials.david.name": "David Hill",
-  "go.testimonials.david.title": "ex-Head of Design, Laravel",
-  "go.testimonials.david.quoteBefore": "Med",
-  "go.testimonials.david.quoteAfter": "ved jeg, at alle modellerne er testede og perfekte til kodningsagenter.",
-  "go.testimonials.frank.name": "Frank Wang",
-  "go.testimonials.frank.title": "ex-Intern, Nvidia (4 gange)",
-  "go.testimonials.frank.quote": "Jeg ville ønske, jeg stadig var hos Nvidia.",
   "go.problem.title": "Hvilket problem løser Go?",
   "go.problem.body":
     "Vi fokuserer på at bringe OpenCode-oplevelsen ud til så mange som muligt. OpenCode Go er et lavprisabonnement: $5 for den første måned, derefter $10/måned. Det giver generøse grænser og pålidelig adgang til de mest kapable open source-modeller.",
@@ -316,13 +295,6 @@ export const dict = {
   "go.how.step2.afterLink": "derefter $10/måned med generøse grænser",
   "go.how.step3.title": "Start kodning",
   "go.how.step3.body": "med pålidelig adgang til open source-modeller",
-  "go.privacy.title": "Dit privatliv er vigtigt for os",
-  "go.privacy.body":
-    "Planen er primært designet til internationale brugere, med modeller hostet i USA, EU og Singapore for stabil global adgang.",
-  "go.privacy.contactAfter": "hvis du har spørgsmål.",
-  "go.privacy.beforeExceptions":
-    "Go-modeller hostes i USA. Udbydere følger en nulopbevaringspolitik og bruger ikke dine data til modeltræning, med de",
-  "go.privacy.exceptionsLink": "følgende undtagelser",
   "go.faq.q1": "Hvad er OpenCode Go?",
   "go.faq.a1":
     "Go er et lavprisabonnement, der giver dig pålidelig adgang til kapable open source-modeller til agentisk kodning.",
@@ -341,9 +313,6 @@ export const dict = {
   "go.faq.q5": "Hvad med data og privatliv?",
   "go.faq.a5.body":
     "Planen er primært designet til internationale brugere, med modeller hostet i USA, EU og Singapore for stabil global adgang. Vores udbydere følger en nulopbevaringspolitik og bruger ikke dine data til modeltræning.",
-  "go.faq.a5.beforeExceptions":
-    "Go-modeller hostes i USA. Udbydere følger en nulopbevaringspolitik og bruger ikke dine data til modeltræning, med de",
-  "go.faq.a5.exceptionsLink": "følgende undtagelser",
   "go.faq.q6": "Kan jeg tanke kredit op?",
   "go.faq.a6": "Hvis du har brug for mere forbrug, kan du tanke kredit op på din konto.",
   "go.faq.q7": "Kan jeg annullere?",

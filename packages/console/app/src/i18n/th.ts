@@ -273,27 +273,6 @@ export const dict = {
   "go.graph.usageLimits": "ขีดจำกัดการใช้งาน",
   "go.graph.aria": "คำขอต่อ 5 ชม.: {{free}} vs {{go}}",
 
-  "go.testimonials.brand.zen": "Zen",
-  "go.testimonials.brand.go": "Go",
-  "go.testimonials.handle": "@OpenCode",
-  "go.testimonials.dax.name": "Dax Raad",
-  "go.testimonials.dax.title": "อดีต CEO, Terminal Products",
-  "go.testimonials.dax.quoteAfter": "เปลี่ยนชีวิตไปเลย มันเป็นสิ่งที่ต้องมีจริงๆ",
-  "go.testimonials.jay.name": "Jay V",
-  "go.testimonials.jay.title": "อดีตผู้ก่อตั้ง SEED, PM, Melt, Pop, Dapt, Cadmus และ ViewPoint",
-  "go.testimonials.jay.quoteBefore": "4 ใน 5 คนในทีมของเราชอบใช้",
-  "go.testimonials.jay.quoteAfter": "",
-  "go.testimonials.adam.name": "Adam Elmore",
-  "go.testimonials.adam.title": "อดีต Hero, AWS",
-  "go.testimonials.adam.quoteBefore": "ผมแนะนำ",
-  "go.testimonials.adam.quoteAfter": "ได้ไม่พอจริงๆ พูดจริงนะ มันดีมากๆ",
-  "go.testimonials.david.name": "David Hill",
-  "go.testimonials.david.title": "อดีตหัวหน้าฝ่ายออกแบบ, Laravel",
-  "go.testimonials.david.quoteBefore": "ด้วย",
-  "go.testimonials.david.quoteAfter": "ผมรู้ว่าโมเดลทั้งหมดผ่านการทดสอบและสมบูรณ์แบบสำหรับเอเจนต์เขียนโค้ด",
-  "go.testimonials.frank.name": "Frank Wang",
-  "go.testimonials.frank.title": "อดีตเด็กฝึกงาน, Nvidia (4 ครั้ง)",
-  "go.testimonials.frank.quote": "ผมหวังว่าผมจะยังอยู่ที่ Nvidia",
   "go.problem.title": "Go แก้ปัญหาอะไร?",
   "go.problem.body":
     "เรามุ่งมั่นที่จะนำประสบการณ์ OpenCode ไปสู่ผู้คนให้ได้มากที่สุด OpenCode Go เป็นการสมัครสมาชิกราคาประหยัด: $5 สำหรับเดือนแรก จากนั้น $10/เดือน โดยมอบขีดจำกัดที่เอื้อเฟื้อและการเข้าถึงโมเดลโอเพนซอร์สที่มีความสามารถสูงสุดอย่างเชื่อถือได้",
@@ -313,13 +292,6 @@ export const dict = {
   "go.how.step2.afterLink": "จากนั้น $10/เดือน พร้อมขีดจำกัดที่เอื้อเฟื้อ",
   "go.how.step3.title": "เริ่มเขียนโค้ด",
   "go.how.step3.body": "ด้วยการเข้าถึงโมเดลโอเพนซอร์สที่เชื่อถือได้",
-  "go.privacy.title": "ความเป็นส่วนตัวของคุณสำคัญสำหรับเรา",
-  "go.privacy.body":
-    "แผนนี้ออกแบบมาเพื่อผู้ใช้งานระหว่างประเทศเป็นหลัก โดยมีโมเดลโฮสต์ในสหรัฐอเมริกา สหภาพยุโรป และสิงคโปร์ เพื่อการเข้าถึงทั่วโลกที่เสถียร",
-  "go.privacy.contactAfter": "หากคุณมีคำถามใดๆ",
-  "go.privacy.beforeExceptions":
-    "โมเดล Go โฮสต์ในสหรัฐอเมริกา ผู้ให้บริการปฏิบัติตามนโยบายไม่เก็บรักษาข้อมูล (zero-retention policy) และไม่ใช้ข้อมูลของคุณสำหรับการฝึกโมเดล โดยมี",
-  "go.privacy.exceptionsLink": "ข้อยกเว้นดังนี้",
   "go.faq.q1": "OpenCode Go คืออะไร?",
   "go.faq.a1":
     "Go คือการสมัครสมาชิกราคาประหยัดที่ให้คุณเข้าถึงโมเดลโอเพนซอร์สที่มีความสามารถสำหรับการเขียนโค้ดแบบเอเจนต์ได้อย่างน่าเชื่อถือ",
@@ -338,9 +310,6 @@ export const dict = {
   "go.faq.q5": "แล้วเรื่องข้อมูลและความเป็นส่วนตัวล่ะ?",
   "go.faq.a5.body":
     "แผนนี้ออกแบบมาเพื่อผู้ใช้งานระหว่างประเทศเป็นหลัก โดยมีโมเดลโฮสต์ในสหรัฐอเมริกา สหภาพยุโรป และสิงคโปร์ เพื่อการเข้าถึงทั่วโลกที่เสถียร ผู้ให้บริการของเราปฏิบัติตามนโยบายไม่เก็บรักษาข้อมูลและไม่ใช้ข้อมูลของคุณสำหรับการฝึกโมเดล",
-  "go.faq.a5.beforeExceptions":
-    "โมเดล Go โฮสต์ในสหรัฐอเมริกา ผู้ให้บริการปฏิบัติตามนโยบายไม่เก็บรักษาข้อมูล (zero-retention policy) และไม่ใช้ข้อมูลของคุณสำหรับการฝึกโมเดล โดยมี",
-  "go.faq.a5.exceptionsLink": "ข้อยกเว้นดังนี้",
   "go.faq.q6": "ฉันสามารถเติมเครดิตได้หรือไม่?",
   "go.faq.a6": "หากคุณต้องการใช้งานเพิ่ม คุณสามารถเติมเครดิตในบัญชีของคุณได้",
   "go.faq.q7": "ฉันสามารถยกเลิกได้หรือไม่?",

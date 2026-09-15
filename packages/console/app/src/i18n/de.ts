@@ -277,27 +277,6 @@ export const dict = {
   "go.graph.usageLimits": "Nutzungslimits",
   "go.graph.aria": "Anfragen pro 5h: {{free}} vs {{go}}",
 
-  "go.testimonials.brand.zen": "Zen",
-  "go.testimonials.brand.go": "Go",
-  "go.testimonials.handle": "@OpenCode",
-  "go.testimonials.dax.name": "Dax Raad",
-  "go.testimonials.dax.title": "ex-CEO, Terminal Products",
-  "go.testimonials.dax.quoteAfter": "hat mein Leben verändert, es ist wirklich ein No-Brainer.",
-  "go.testimonials.jay.name": "Jay V",
-  "go.testimonials.jay.title": "ex-Gründer, SEED, PM, Melt, Pop, Dapt, Cadmus und ViewPoint",
-  "go.testimonials.jay.quoteBefore": "4 von 5 Leuten in unserem Team lieben die Nutzung von",
-  "go.testimonials.jay.quoteAfter": ".",
-  "go.testimonials.adam.name": "Adam Elmore",
-  "go.testimonials.adam.title": "ex-Hero, AWS",
-  "go.testimonials.adam.quoteBefore": "Ich kann",
-  "go.testimonials.adam.quoteAfter": "nicht genug empfehlen. Ernsthaft, es ist wirklich gut.",
-  "go.testimonials.david.name": "David Hill",
-  "go.testimonials.david.title": "ex-Head of Design, Laravel",
-  "go.testimonials.david.quoteBefore": "Mit",
-  "go.testimonials.david.quoteAfter": "weiß ich, dass alle Modelle getestet und perfekt für Coding-Agenten sind.",
-  "go.testimonials.frank.name": "Frank Wang",
-  "go.testimonials.frank.title": "ex-Praktikant, Nvidia (4 mal)",
-  "go.testimonials.frank.quote": "Ich wünschte, ich wäre noch bei Nvidia.",
   "go.problem.title": "Welches Problem löst Go?",
   "go.problem.body":
     "Wir konzentrieren uns darauf, die OpenCode-Erfahrung so vielen Menschen wie möglich zugänglich zu machen. OpenCode Go ist ein kostengünstiges Abonnement: $5 im ersten Monat, danach $10/Monat. Es bietet großzügige Limits und zuverlässigen Zugang zu den leistungsfähigsten Open-Source-Modellen.",
@@ -318,13 +297,6 @@ export const dict = {
   "go.how.step2.afterLink": "danach $10/Monat mit großzügigen Limits",
   "go.how.step3.title": "Loslegen mit Coding",
   "go.how.step3.body": "mit zuverlässigem Zugang zu Open-Source-Modellen",
-  "go.privacy.title": "Deine Privatsphäre ist uns wichtig",
-  "go.privacy.body":
-    "Der Plan ist primär für internationale Nutzer konzipiert, mit Modellen gehostet in den USA, der EU und Singapur für stabilen globalen Zugang.",
-  "go.privacy.contactAfter": "wenn du Fragen hast.",
-  "go.privacy.beforeExceptions":
-    "Go-Modelle werden in den USA gehostet. Anbieter verfolgen eine Zero-Retention-Politik und nutzen deine Daten nicht für das Training von Modellen, mit den",
-  "go.privacy.exceptionsLink": "folgenden Ausnahmen",
   "go.faq.q1": "Was ist OpenCode Go?",
   "go.faq.a1":
     "Go ist ein kostengünstiges Abonnement, das dir zuverlässigen Zugang zu leistungsfähigen Open-Source-Modellen für Agentic Coding bietet.",
@@ -343,9 +315,6 @@ export const dict = {
   "go.faq.q5": "Was ist mit Daten und Privatsphäre?",
   "go.faq.a5.body":
     "Der Plan ist primär für internationale Nutzer konzipiert, mit Modellen gehostet in den USA, der EU und Singapur für stabilen globalen Zugang. Unsere Anbieter verfolgen eine Zero-Retention-Politik und nutzen deine Daten nicht für das Training von Modellen.",
-  "go.faq.a5.beforeExceptions":
-    "Go-Modelle werden in den USA gehostet. Anbieter verfolgen eine Zero-Retention-Politik und nutzen deine Daten nicht für das Training von Modellen, mit den",
-  "go.faq.a5.exceptionsLink": "folgenden Ausnahmen",
   "go.faq.q6": "Kann ich Guthaben aufladen?",
   "go.faq.a6": "Wenn du mehr Nutzung benötigst, kannst du Guthaben in deinem Konto aufladen.",
   "go.faq.q7": "Kann ich kündigen?",

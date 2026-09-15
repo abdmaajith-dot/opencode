@@ -57,7 +57,6 @@ export const dict = {
   "common.cancel": "Скасувати",
   "common.creating": "Створення...",
   "common.create": "Створити",
-  "common.contactUs": "Зв'яжіться з нами",
 
   "common.videoUnsupported": "Ваш браузер не підтримує відео.",
   "common.figure": "Рис. {{n}}.",
@@ -276,27 +275,6 @@ export const dict = {
   "go.graph.usageLimits": "Ліміти використання",
   "go.graph.aria": "Запитів за 5 год: {{free}} vs {{go}}",
 
-  "go.testimonials.brand.zen": "Zen",
-  "go.testimonials.brand.go": "Go",
-  "go.testimonials.handle": "@OpenCode",
-  "go.testimonials.dax.name": "Dax Raad",
-  "go.testimonials.dax.title": "ex-CEO, Terminal Products",
-  "go.testimonials.dax.quoteAfter": "змінило моє життя, це справді очевидний вибір.",
-  "go.testimonials.jay.name": "Jay V",
-  "go.testimonials.jay.title": "ex-Founder, SEED, PM, Melt, Pop, Dapt, Cadmus, and ViewPoint",
-  "go.testimonials.jay.quoteBefore": "4 з 5 людей у нашій команді люблять використовувати",
-  "go.testimonials.jay.quoteAfter": ".",
-  "go.testimonials.adam.name": "Adam Elmore",
-  "go.testimonials.adam.title": "ex-Hero, AWS",
-  "go.testimonials.adam.quoteBefore": "Я не можу достатньо рекомендувати",
-  "go.testimonials.adam.quoteAfter": ". Серйозно, це дійсно добре.",
-  "go.testimonials.david.name": "David Hill",
-  "go.testimonials.david.title": "ex-Head of Design, Laravel",
-  "go.testimonials.david.quoteBefore": "Завдяки",
-  "go.testimonials.david.quoteAfter": "я знаю, що всі моделі протестовані та ідеальні для агентів кодування.",
-  "go.testimonials.frank.name": "Frank Wang",
-  "go.testimonials.frank.title": "ex-Intern, Nvidia (4 times)",
-  "go.testimonials.frank.quote": "Хотів би я досі бути в Nvidia.",
   "go.problem.title": "Яку проблему вирішує Go?",
   "go.problem.body":
     "Ми зосереджені на тому, щоб зробити досвід OpenCode доступним для якомога більшої кількості людей. OpenCode Go — це недорога підписка: $5 за перший місяць, потім $10/місяць. Вона надає щедрі ліміти та надійний доступ до найкращих моделей з відкритим кодом.",
@@ -317,13 +295,6 @@ export const dict = {
   "go.how.step2.afterLink": "потім $10/місяць із щедрими лімітами",
   "go.how.step3.title": "Почніть кодувати",
   "go.how.step3.body": "з надійним доступом до моделей з відкритим кодом",
-  "go.privacy.title": "Ваша конфіденційність важлива для нас",
-  "go.privacy.body":
-    "План розроблений переважно для міжнародних користувачів, з моделями, розміщеними в США, ЄС та Сінгапурі для стабільного глобального доступу.",
-  "go.privacy.contactAfter": "якщо у вас є запитання.",
-  "go.privacy.beforeExceptions":
-    "Моделі Go розміщені в США. Провайдери дотримуються політики нульового зберігання та не використовують ваші дані для навчання моделей, за",
-  "go.privacy.exceptionsLink": "такими винятками",
   "go.faq.q1": "Що таке OpenCode Go?",
   "go.faq.a1":
     "Go — це недорога підписка, яка надає надійний доступ до найкращих моделей з відкритим кодом для агентного кодування.",
@@ -342,9 +313,6 @@ export const dict = {
   "go.faq.q5": "А як щодо даних та конфіденційності?",
   "go.faq.a5.body":
     "План розроблений переважно для міжнародних користувачів, з моделями в США, ЄС та Сінгапурі. Провайдери дотримуються політики нульового зберігання.",
-  "go.faq.a5.beforeExceptions":
-    "Моделі Go розміщені в США. Провайдери дотримуються політики нульового зберігання та не використовують ваші дані для навчання моделей, за",
-  "go.faq.a5.exceptionsLink": "такими винятками",
   "go.faq.q6": "Чи можна поповнити баланс?",
   "go.faq.a6": "Якщо вам потрібно більше використання, ви можете поповнити баланс в обліковому записі.",
   "go.faq.q7": "Чи можна скасувати?",

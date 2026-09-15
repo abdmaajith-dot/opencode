@@ -277,28 +277,6 @@ export const dict = {
   "go.graph.usageLimits": "Kullanım limitleri",
   "go.graph.aria": "5 saatlik istekler: {{free}} vs {{go}}",
 
-  "go.testimonials.brand.zen": "Zen",
-  "go.testimonials.brand.go": "Go",
-  "go.testimonials.handle": "@OpenCode",
-  "go.testimonials.dax.name": "Dax Raad",
-  "go.testimonials.dax.title": "Eski CEO, Terminal Ürünleri",
-  "go.testimonials.dax.quoteAfter": "hayat değiştirdi, gerçekten düşünmeye bile gerek yok.",
-  "go.testimonials.jay.name": "Jay V",
-  "go.testimonials.jay.title": "Eski Kurucu, SEED, PM, Melt, Pop, Dapt, Cadmus ve ViewPoint",
-  "go.testimonials.jay.quoteBefore": "Ekibimizdeki 5 kişiden 4'ü",
-  "go.testimonials.jay.quoteAfter": "kullanmayı seviyor.",
-  "go.testimonials.adam.name": "Adam Elmore",
-  "go.testimonials.adam.title": "Eski Hero, AWS",
-  "go.testimonials.adam.quoteBefore": "",
-  "go.testimonials.adam.quoteAfter": "için tavsiyem sonsuz. Cidden, gerçekten çok iyi.",
-  "go.testimonials.david.name": "David Hill",
-  "go.testimonials.david.title": "Eski Tasarım Başkanı, Laravel",
-  "go.testimonials.david.quoteBefore": "",
-  "go.testimonials.david.quoteAfter":
-    " ile modellerin test edildiğini ve kodlama ajanları için mükemmel olduğunu biliyorum.",
-  "go.testimonials.frank.name": "Frank Wang",
-  "go.testimonials.frank.title": "Eski Stajyer, Nvidia (4 kez)",
-  "go.testimonials.frank.quote": "Keşke hala Nvidia'da olsaydım.",
   "go.problem.title": "Go hangi sorunu çözüyor?",
   "go.problem.body":
     "OpenCode deneyimini mümkün olduğunca çok kişiye ulaştırmaya odaklandık. OpenCode Go düşük maliyetli bir aboneliktir: İlk ay $5, sonrasında ayda 10$. Cömert limitler ve en yetenekli açık kaynak modellere güvenilir erişim sağlar.",
@@ -319,13 +297,6 @@ export const dict = {
   "go.how.step2.afterLink": "sonrasında cömert limitlerle ayda 10$",
   "go.how.step3.title": "Kodlamaya başlayın",
   "go.how.step3.body": "açık kaynaklı modellere güvenilir erişimle",
-  "go.privacy.title": "Gizliliğiniz bizim için önemlidir",
-  "go.privacy.body":
-    "Bu plan öncelikle uluslararası kullanıcılar için tasarlanmış olup, istikrarlı küresel erişim için modeller ABD, AB ve Singapur'da barındırılmaktadır.",
-  "go.privacy.contactAfter": "herhangi bir sorunuz varsa.",
-  "go.privacy.beforeExceptions":
-    "Go modelleri ABD'de barındırılmaktadır. Sağlayıcılar sıfır saklama politikası izler ve verilerinizi model eğitimi için kullanmaz; şu",
-  "go.privacy.exceptionsLink": "aşağıdaki istisnalar",
   "go.faq.q1": "OpenCode Go nedir?",
   "go.faq.a1":
     "Go, ajan tabanlı kodlama için yetenekli açık kaynaklı modellere güvenilir erişim sağlayan düşük maliyetli bir aboneliktir.",
@@ -344,9 +315,6 @@ export const dict = {
   "go.faq.q5": "Veri ve gizlilik ne olacak?",
   "go.faq.a5.body":
     "Bu plan öncelikle uluslararası kullanıcılar için tasarlanmış olup, istikrarlı küresel erişim için modeller ABD, AB ve Singapur'da barındırılmaktadır. Sağlayıcılarımız sıfır saklama politikası izler ve verilerinizi model eğitimi için kullanmaz.",
-  "go.faq.a5.beforeExceptions":
-    "Go modelleri ABD'de barındırılmaktadır. Sağlayıcılar sıfır saklama politikası izler ve verilerinizi model eğitimi için kullanmaz; şu",
-  "go.faq.a5.exceptionsLink": "aşağıdaki istisnalar",
   "go.faq.q6": "Kredi yükleyebilir miyim?",
   "go.faq.a6": "Daha fazla kullanıma ihtiyacınız varsa, hesabınıza kredi yükleyebilirsiniz.",
   "go.faq.q7": "İptal edebilir miyim?",

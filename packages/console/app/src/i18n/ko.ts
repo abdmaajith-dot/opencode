@@ -271,28 +271,6 @@ export const dict = {
   "go.graph.usageLimits": "사용 한도",
   "go.graph.aria": "5시간당 요청 수: {{free}} 대 {{go}}",
 
-  "go.testimonials.brand.zen": "Zen",
-  "go.testimonials.brand.go": "Go",
-  "go.testimonials.handle": "@OpenCode",
-  "go.testimonials.dax.name": "Dax Raad",
-  "go.testimonials.dax.title": "전 Terminal Products CEO",
-  "go.testimonials.dax.quoteAfter": "(은)는 삶을 변화시켰습니다. 정말 당연한 선택입니다.",
-  "go.testimonials.jay.name": "Jay V",
-  "go.testimonials.jay.title": "전 Founder, SEED, PM, Melt, Pop, Dapt, Cadmus, ViewPoint",
-  "go.testimonials.jay.quoteBefore": "우리 팀 5명 중 4명이",
-  "go.testimonials.jay.quoteAfter": " 사용을 정말 좋아합니다.",
-  "go.testimonials.adam.name": "Adam Elmore",
-  "go.testimonials.adam.title": "전 AWS Hero",
-  "go.testimonials.adam.quoteBefore": "저는",
-  "go.testimonials.adam.quoteAfter": "를(을) 아무리 추천해도 부족합니다. 진심으로 정말 좋습니다.",
-  "go.testimonials.david.name": "David Hill",
-  "go.testimonials.david.title": "전 Laravel 디자인 총괄",
-  "go.testimonials.david.quoteBefore": "",
-  "go.testimonials.david.quoteAfter":
-    "와(과) 함께라면 모든 모델이 테스트를 거쳤고 코딩 에이전트에 완벽하다는 것을 알 수 있습니다.",
-  "go.testimonials.frank.name": "Frank Wang",
-  "go.testimonials.frank.title": "전 Nvidia 인턴 (4회)",
-  "go.testimonials.frank.quote": "아직 Nvidia에 있었으면 좋았을 텐데요.",
   "go.problem.title": "Go는 어떤 문제를 해결하나요?",
   "go.problem.body":
     "우리는 가능한 많은 사람들에게 OpenCode 경험을 제공하는 데 집중하고 있습니다. OpenCode Go는 저렴한 구독 서비스로, 첫 달 $5, 이후 $10/월입니다. 넉넉한 한도와 가장 뛰어난 오픈 소스 모델에 대한 안정적인 액세스를 제공합니다.",
@@ -312,13 +290,6 @@ export const dict = {
   "go.how.step2.afterLink": "이후 $10/월, 넉넉한 한도 포함",
   "go.how.step3.title": "코딩 시작",
   "go.how.step3.body": "오픈 소스 모델에 대한 안정적인 액세스와 함께",
-  "go.privacy.title": "귀하의 프라이버시는 우리에게 중요합니다",
-  "go.privacy.body":
-    "이 플랜은 주로 글로벌 사용자를 위해 설계되었으며, 안정적인 글로벌 액세스를 위해 미국, EU, 싱가포르에 모델이 호스팅되어 있습니다.",
-  "go.privacy.contactAfter": "질문이 있으시면 언제든지 문의해 주세요.",
-  "go.privacy.beforeExceptions":
-    "Go 모델은 미국에서 호스팅됩니다. 제공자들은 데이터 보존 금지 정책을 따르며 모델 학습에 데이터를 사용하지 않습니다. 단,",
-  "go.privacy.exceptionsLink": "다음 예외",
   "go.faq.q1": "OpenCode Go란 무엇인가요?",
   "go.faq.a1": "Go는 에이전트 코딩을 위한 유능한 오픈 소스 모델에 대해 안정적인 액세스를 제공하는 저비용 구독입니다.",
   "go.faq.q2": "Go에는 어떤 모델이 포함되나요?",
@@ -336,9 +307,6 @@ export const dict = {
   "go.faq.q5": "데이터와 프라이버시는 어떤가요?",
   "go.faq.a5.body":
     "이 플랜은 주로 글로벌 사용자를 위해 설계되었으며, 안정적인 글로벌 액세스를 위해 미국, EU, 싱가포르에 모델이 호스팅되어 있습니다. 당사의 제공자들은 데이터 보존 금지 정책을 따르며 모델 학습에 데이터를 사용하지 않습니다.",
-  "go.faq.a5.beforeExceptions":
-    "Go 모델은 미국에서 호스팅됩니다. 제공자들은 데이터 보존 금지 정책을 따르며 모델 학습에 데이터를 사용하지 않습니다. 단,",
-  "go.faq.a5.exceptionsLink": "다음 예외",
   "go.faq.q6": "크레딧을 충전할 수 있나요?",
   "go.faq.a6": "사용량이 더 필요한 경우 계정에서 크레딧을 충전할 수 있습니다.",
   "go.faq.q7": "취소할 수 있나요?",

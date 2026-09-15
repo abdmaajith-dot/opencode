@@ -57,7 +57,6 @@ export const dict = {
   "common.cancel": "Cancel",
   "common.creating": "Creating...",
   "common.create": "Create",
-  "common.contactUs": "Contact us",
 
   "common.videoUnsupported": "Your browser does not support the video tag.",
   "common.figure": "Fig {{n}}.",
@@ -273,27 +272,6 @@ export const dict = {
   "go.graph.usageLimits": "Usage limits",
   "go.graph.aria": "Requests per 5h: {{free}} vs {{go}}",
 
-  "go.testimonials.brand.zen": "Zen",
-  "go.testimonials.brand.go": "Go",
-  "go.testimonials.handle": "@OpenCode",
-  "go.testimonials.dax.name": "Dax Raad",
-  "go.testimonials.dax.title": "ex-CEO, Terminal Products",
-  "go.testimonials.dax.quoteAfter": "has been life changing, it's truly a no-brainer.",
-  "go.testimonials.jay.name": "Jay V",
-  "go.testimonials.jay.title": "ex-Founder, SEED, PM, Melt, Pop, Dapt, Cadmus, and ViewPoint",
-  "go.testimonials.jay.quoteBefore": "4 out of 5 people on our team love using",
-  "go.testimonials.jay.quoteAfter": ".",
-  "go.testimonials.adam.name": "Adam Elmore",
-  "go.testimonials.adam.title": "ex-Hero, AWS",
-  "go.testimonials.adam.quoteBefore": "I can't recommend",
-  "go.testimonials.adam.quoteAfter": "enough. Seriously, it's really good.",
-  "go.testimonials.david.name": "David Hill",
-  "go.testimonials.david.title": "ex-Head of Design, Laravel",
-  "go.testimonials.david.quoteBefore": "With",
-  "go.testimonials.david.quoteAfter": "I know all the models are tested and perfect for coding agents.",
-  "go.testimonials.frank.name": "Frank Wang",
-  "go.testimonials.frank.title": "ex-Intern, Nvidia (4 times)",
-  "go.testimonials.frank.quote": "I wish I was still at Nvidia.",
   "go.problem.title": "What problem is Go solving?",
   "go.problem.body":
     "We're focused on bringing the OpenCode experience to as many people as possible. OpenCode Go is a low cost subscription: $5 for your first month, then $10/month. It provides generous limits and reliable access to the most capable open source models.",
@@ -313,13 +291,6 @@ export const dict = {
   "go.how.step2.afterLink": "then $10/month with generous limits",
   "go.how.step3.title": "Start coding",
   "go.how.step3.body": "with reliable access to open-source models",
-  "go.privacy.title": "Your privacy is important to us",
-  "go.privacy.body":
-    "The plan is designed primarily for international users, with models hosted in the US, EU, and Singapore for stable global access.",
-  "go.privacy.contactAfter": "if you have any questions.",
-  "go.privacy.beforeExceptions":
-    "Go models are hosted in the US. Providers follow a zero-retention policy and do not use your data for model training, with the",
-  "go.privacy.exceptionsLink": "following exceptions",
   "go.faq.q1": "What is OpenCode Go?",
   "go.faq.a1":
     "Go is a low-cost subscription that gives you reliable access to capable open-source models for agentic coding.",
@@ -339,9 +310,6 @@ export const dict = {
   "go.faq.a5.body":
     "The plan is designed primarily for international users, with models hosted in the US, EU, and Singapore for stable global access. Our providers follow a zero-retention policy and do not use your data for model training.",
 
-  "go.faq.a5.beforeExceptions":
-    "Go models are hosted in the US. Providers follow a zero-retention policy and do not use your data for model training, with the",
-  "go.faq.a5.exceptionsLink": "following exceptions",
   "go.faq.q6": "Can I top up credit?",
   "go.faq.a6": "If you need more usage, you can top up credit in your account.",
   "go.faq.q7": "Can I cancel?",
