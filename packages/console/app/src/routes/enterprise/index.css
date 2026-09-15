@@ -337,25 +337,6 @@
       margin-bottom: 1.5rem;
       color: var(--color-text);
     }
-
-    [data-component="testimonial"] {
-      margin-top: 4rem;
-      font-weight: 500;
-      color: var(--color-text-strong);
-
-      [data-component="quotation"] {
-        svg {
-          margin-bottom: 1rem;
-          opacity: 20%;
-        }
-      }
-
-      [data-component="testimonial-logo"] {
-        svg {
-          margin-top: 1.5rem;
-        }
-      }
-    }
   }
 
   [data-component="enterprise-column-2"] {
