@@ -11,26 +11,6 @@ export const IpTable = mysqlTable(
   (table) => [primaryKey({ columns: [table.ip] })],
 )
 
-export const IpRateLimitTable = mysqlTable(
-  "ip_rate_limit",
-  {
-    ip: varchar("ip", { length: 45 }).notNull(),
-    interval: varchar("interval", { length: 10 }).notNull(),
-    count: int("count").notNull(),
-  },
-  (table) => [primaryKey({ columns: [table.ip, table.interval] })],
-)
-
-export const KeyRateLimitTable = mysqlTable(
-  "key_rate_limit",
-  {
-    key: varchar("key", { length: 255 }).notNull(),
-    interval: varchar("interval", { length: 40 }).notNull(),
-    count: int("count").notNull(),
-  },
-  (table) => [primaryKey({ columns: [table.key, table.interval] })],
-)
-
 export const ModelTpmRateLimitTable = mysqlTable(
   "model_tpm_rate_limit",
   {
