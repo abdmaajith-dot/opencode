@@ -32,16 +32,6 @@ export namespace User {
     ),
   )
 
-  export const fromID = fn(z.string(), (id) =>
-    Database.use((tx) =>
-      tx
-        .select()
-        .from(UserTable)
-        .where(and(eq(UserTable.workspaceID, Actor.workspace()), eq(UserTable.id, id), isNull(UserTable.timeDeleted)))
-        .then((rows) => rows[0]),
-    ),
-  )
-
   export const getAuthEmail = fn(z.string(), (id) =>
     Database.use((tx) =>
       tx
