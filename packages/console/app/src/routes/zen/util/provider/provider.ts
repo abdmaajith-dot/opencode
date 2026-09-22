@@ -83,25 +83,6 @@ export interface CommonTool {
   }
 }
 
-export interface CommonUsage {
-  input_tokens?: number
-  output_tokens?: number
-  total_tokens?: number
-  prompt_tokens?: number
-  completion_tokens?: number
-  cache_read_input_tokens?: number
-  cache_creation?: {
-    ephemeral_5m_input_tokens?: number
-    ephemeral_1h_input_tokens?: number
-  }
-  input_tokens_details?: {
-    cached_tokens?: number
-  }
-  output_tokens_details?: {
-    reasoning_tokens?: number
-  }
-}
-
 export interface CommonRequest {
   model: string
   max_tokens?: number
