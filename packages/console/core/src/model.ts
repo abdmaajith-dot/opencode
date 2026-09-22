@@ -212,21 +212,4 @@ export namespace Model {
         .then((rows) => rows.map((row) => row.model)),
     )
   })
-
-  export const isDisabled = fn(
-    z.object({
-      model: z.string(),
-    }),
-    ({ model }) => {
-      return Database.use(async (db) => {
-        const result = await db
-          .select()
-          .from(ModelTable)
-          .where(and(eq(ModelTable.workspaceID, Actor.workspace()), eq(ModelTable.model, model)))
-          .limit(1)
-
-        return result.length > 0
-      })
-    },
-  )
 }
