@@ -53,18 +53,6 @@ export namespace Database {
       throw err
     }
   }
-  export async function fn<Input, T>(callback: (input: Input, trx: TxOrDb) => Promise<T>) {
-    return (input: Input) => use(async (tx) => callback(input, tx))
-  }
-
-  export async function effect(effect: () => any | Promise<any>) {
-    try {
-      const { effects } = TransactionContext.use()
-      effects.push(effect)
-    } catch {
-      await effect()
-    }
-  }
 
   export async function transaction<T>(callback: (tx: TxOrDb) => Promise<T>, config?: MySqlTransactionConfig) {
     try {
